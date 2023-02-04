@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import tmi from 'tmi.js';
 
-const useTwitchChat = (channel : string) => {
+export const useTwitchChat = (channel : string) => {
   const [messages, setMessages] = useState<string[]>([]);
 
   useEffect(() => {
