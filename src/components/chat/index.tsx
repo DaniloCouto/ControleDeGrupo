@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Box } from "@mui/material";
 import './index.css';
 import useTwitchChat from '../../hooks/useTwitchChat';
 import { sendCommand } from '../../services/command'
@@ -13,20 +14,22 @@ const Chat : React.FC<ChatProps> = ({ channel }) => {
 
   useEffect(() => {
     if(chat.length){
-      if( chat[chat.length - 1].indexOf('pica') > -1){
+      if( chat[chat.length - 1].message.indexOf('pica') > -1){
         sendCommand('a')
       }
     }
   }, [chat])
 
   return (
-    <div className="App">
-      <header className="App-header">
-        {
-          lastMessage
-        }
-      </header>
-    </div>
+    <Box>
+      {
+        chat.map(({id, message, displayName}) => (
+          <Box key={`message-${id}`} >
+            {`${displayName} : ${message}`}
+          </Box>
+        ))
+      }
+    </Box>
   );
 }
 

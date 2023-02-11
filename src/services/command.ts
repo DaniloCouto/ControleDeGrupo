@@ -1,4 +1,4 @@
-interface SendCommandReturn {
+export interface SendCommandReturn {
     success: boolean
     message: string
 }
